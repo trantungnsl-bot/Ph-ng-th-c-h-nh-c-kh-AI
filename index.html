@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phòng thực hành cơ khí thông minh</title>
+<style>
+:root{--navy:#10243b;--blue:#1769aa;--cyan:#12a8c7;--bg:#f3f6fa;--ink:#1c2b3a;--muted:#617286;--line:#dce5ee;--green:#16834a}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(115deg,#10243b,#1769aa);color:white;padding:24px max(18px,calc((100% - 1120px)/2))}
+header .eyebrow{font-size:12px;letter-spacing:1.8px;color:#a9dff2;font-weight:bold}
+header h1{margin:8px 0;font-size:clamp(25px,4vw,38px)}header p{margin:0;color:#d9e9f5;max-width:720px;line-height:1.5}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+nav a{color:white;text-decoration:none;border:1px solid #ffffff55;padding:9px 13px;border-radius:20px;font-size:13px}
+main{max-width:1120px;margin:24px auto;padding:0 16px}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:16px}
+.panel,.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 18px #17324d0a}
+.panel h2,.section-title{margin:0 0 12px;font-size:21px}
+.kicker{font-size:12px;color:var(--blue);font-weight:bold;letter-spacing:1px}
+.lead{color:var(--muted);line-height:1.55}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.step{background:#f5f9fd;border:1px solid var(--line);padding:12px;border-radius:12px}
+.step b{display:block;color:var(--blue);margin-bottom:5px}.step span{font-size:13px;color:var(--muted)}
+.section{margin-top:22px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+button,.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--blue);color:white;font-weight:bold;cursor:pointer}
+button.secondary{background:#eaf2f9;color:var(--blue)}button.green{background:var(--green)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.scanner{background:#0d1c2d;color:white;border-radius:14px;padding:14px}
+.camera{position:relative;background:#172e47;border:1px solid #35516d;border-radius:12px;min-height:245px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.camera video,.camera canvas{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
+.camera .placeholder{text-align:center;color:#c7d7e7;padding:20px;z-index:1}
+.camera .frame{position:absolute;inset:13% 18%;border:2px dashed #5dd8ee;border-radius:12px;pointer-events:none;z-index:2}
+.camera .frame:before,.camera .frame:after{content:"";position:absolute;width:20px;height:20px;border-color:#5dd8ee;border-style:solid}
+.camera .frame:before{top:-2px;left:-2px;border-width:3px 0 0 3px}.camera .frame:after{bottom:-2px;right:-2px;border-width:0 3px 3px 0}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+input[type=file]{display:none}.status{font-size:12px;color:#b8d0e3;margin-top:9px}
+.result{display:none;background:#f1f8ff;border:1px solid #cfe2f5;padding:14px;border-radius:12px;margin-top:12px;color:#1c2b3a}
+.result h3{margin:0 0 8px}.result ul{margin:8px 0;padding-left:20px;line-height:1.7}
+.tag{display:inline-block;background:#e6f4ec;color:#176b3d;border-radius:20px;padding:5px 9px;font-size:12px;font-weight:bold}
+.process{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.process article{border:1px solid var(--line);border-radius:12px;padding:13px}
+.process strong{display:block;margin:6px 0}.process p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+.video-box{background:#101d2e;color:white;border-radius:12px;padding:20px;text-align:center}
+.video-box .play{font-size:42px;color:#7ad8ee}
+.note{font-size:12px;color:var(--muted);line-height:1.5}
+.checklist label{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid var(--line);line-height:1.4}
+footer{text-align:center;padding:28px;color:var(--muted);font-size:12px}
+@media(max-width:760px){.hero,.grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.process{grid-template-columns:1fr 1fr}.section-head{align-items:start;flex-direction:column}}
+@media(max-width:430px){.process{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">STEM • CÔNG NGHỆ CƠ KHÍ • HỌC TẬP DỰ ÁN</div>
+  <h1>PHÒNG THỰC HÀNH CƠ KHÍ THÔNG MINH</h1>
+  <p>Khám phá quy trình thiết kế, gia công và đánh giá sản phẩm cơ khí. Học sinh chủ động học từng bước, quan sát video và thử nghiệm chức năng quét sản phẩm.</p>
+  <nav><a href="#lo-trinh">Lộ trình</a><a href="#scanner">AI Scanner</a><a href="#quy-trinh">Quy trình gia công</a><a href="#danh-gia">Đánh giá</a></nav>
+</header>
+<main>
+  <div class="hero" id="lo-trinh">
+    <section class="panel">
+      <div class="kicker">SẢN PHẨM MẪU</div>
+      <h2>Giá đỡ điện thoại bằng kim loại</h2>
+      <p class="lead">Dự án thực hành giúp học sinh vận dụng kỹ năng đo, vạch dấu, cắt, dũa, uốn và hoàn thiện sản phẩm. Có thể điều chỉnh kích thước theo bản vẽ và vật liệu thực tế.</p>
+      <div class="steps">
+        <div class="step"><b>01 • Thiết kế</b><span>Phác thảo và xác định kích thước</span></div>
+        <div class="step"><b>02 • Chuẩn bị</b><span>Chọn phôi, dụng cụ và bảo hộ</span></div>
+        <div class="step"><b>03 • Gia công</b><span>Đo, cắt, dũa, uốn, lắp</span></div>
+        <div class="step"><b>04 • Kiểm tra</b><span>Thử độ ổn định và hoàn thiện</span></div>
+      </div>
+    </section>
+    <aside class="panel">
+      <div class="kicker">MỤC TIÊU HỌC TẬP</div>
+      <h2>Sau bài học, em có thể</h2>
+      <ul class="lead" style="padding-left:20px">
+        <li>Đọc bản vẽ và xác định kích thước.</li>
+        <li>Lựa chọn vật liệu, dụng cụ phù hợp.</li>
+        <li>Lập trình tự nguyên công cơ bản.</li>
+        <li>Thực hiện và tự đánh giá sản phẩm.</li>
+      </ul>
+      <span class="tag">Học qua thực hành</span>
+    </aside>
+  </div>
+
+  <section class="section panel" id="scanner">
+    <div class="section-head">
+      <div><div class="kicker">NHẬN DIỆN HÌNH ẢNH</div><h2 class="section-title">AI Scanner – Quét sản phẩm cơ khí</h2></div>
+      <span class="tag">Bản thử nghiệm giao diện</span>
+    </div>
+    <p class="lead">Cho phép camera xem trực tiếp hoặc tải ảnh sản phẩm lên. Ảnh sẽ được gửi đến máy chủ của website để AI Vision phân tích. Máy chủ giữ kín API key; kết quả là gợi ý học tập và cần giáo viên kiểm tra trước khi gia công.</p>
+    <div class="scanner">
+      <div class="camera" id="cameraArea">
+        <div class="placeholder" id="cameraPlaceholder"><div style="font-size:42px">⌗</div><b>Đặt sản phẩm vào vùng quét</b><div style="font-size:12px;margin-top:7px">Bật camera hoặc tải ảnh từ thiết bị</div></div>
+        <video id="video" autoplay playsinline muted hidden></video>
+        <img id="preview" alt="Ảnh sản phẩm tải lên" hidden style="position:absolute;max-width:100%;max-height:100%;object-fit:contain">
+        <div class="frame"></div>
+      </div>
+      <div class="controls">
+        <button class="green" id="startCamera">Bật camera</button>
+        <button class="secondary" id="capture" disabled>Chụp ảnh</button>
+        <label class="btn secondary" for="upload" style="display:inline-flex;align-items:center">Tải ảnh lên</label><input id="upload" type="file" accept="image/*">
+        <button id="analyze">AI phân tích ảnh</button>
+      </div>
+      <div class="status" id="cameraStatus">Trạng thái: Chưa bật camera. Trình duyệt cần được cấp quyền camera và website chạy qua HTTPS hoặc localhost.</div>
+      <canvas id="snapshot" hidden></canvas>
+    </div>
+    <div class="result" id="result"><h3>📋 Kết quả AI Vision</h3><div id="aiOutput" style="white-space:pre-wrap;line-height:1.65"></div><p class="note"><b>Lưu ý an toàn:</b> AI có thể nhận diện sai vật liệu, kích thước hoặc cấu tạo. Giáo viên phải xác minh bản vẽ, quy trình và điều kiện an toàn trước khi thực hành.</p></div>
+  </section>
+
+  <section class="section panel" id="quy-trinh">
+    <div class="kicker">HƯỚNG DẪN THỰC HÀNH</div><h2 class="section-title">Quy trình gia công đề xuất</h2>
+    <div class="process">
+      <article><div class="kicker">NGUYÊN CÔNG 01</div><strong>Đọc bản vẽ – chuẩn bị</strong><p>Xác định hình dạng, kích thước, dung sai cần thiết; chuẩn bị phôi, thước, ê-tô, cưa và dũa.</p></article>
+      <article><div class="kicker">NGUYÊN CÔNG 02</div><strong>Đo và vạch dấu</strong><p>Đo phôi, vạch đường cắt và đường uốn theo bản vẽ. Kiểm tra lại trước khi cắt.</p></article>
+      <article><div class="kicker">NGUYÊN CÔNG 03</div><strong>Cắt phôi – sửa cạnh</strong><p>Kẹp phôi chắc chắn, cắt đúng đường dấu; dũa ba via và làm nhẵn cạnh.</p></article>
+      <article><div class="kicker">NGUYÊN CÔNG 04</div><strong>Uốn tạo hình</strong><p>Dùng đồ gá hoặc dưỡng uốn phù hợp để tạo phần tựa và gờ chặn, tránh làm nứt hoặc biến dạng phôi.</p></article>
+      <article><div class="kicker">NGUYÊN CÔNG 05</div><strong>Làm nhẵn – hoàn thiện</strong><p>Kiểm tra cạnh sắc, làm sạch bề mặt và xử lý hoàn thiện theo yêu cầu của giáo viên.</p></article>
+      <article><div class="kicker">NGUYÊN CÔNG 06</div><strong>Kiểm tra sản phẩm</strong><p>Đặt điện thoại thử, kiểm tra độ ổn định, góc nhìn, kích thước và độ chắc chắn.</p></article>
+    </div>
+  </section>
+
+  <section class="section grid">
+    <div class="panel">
+      <div class="kicker">VIDEO HƯỚNG DẪN</div><h2 class="section-title">Quan sát thao tác gia công</h2>
+      <div class="video-box"><div class="play">▶</div><b>Khu vực video bài học</b><p class="note" style="color:#c4d5e5">Chèn video do giáo viên cung cấp hoặc video hướng dẫn đã được kiểm duyệt tại đây.</p></div>
+      <p class="note">Khu vực video mẫu đang chờ giáo viên thêm video thao tác thực tế của trường.</p>
+    </div>
+    <div class="panel checklist" id="danh-gia">
+      <div class="kicker">THEO DÕI TIẾN ĐỘ</div><h2 class="section-title">Checklist thực hành</h2>
+      <label><input type="checkbox"> Em đã đọc và hiểu bản vẽ.</label>
+      <label><input type="checkbox"> Em đã chuẩn bị vật liệu và dụng cụ.</label>
+      <label><input type="checkbox"> Em đã đo, vạch dấu và kiểm tra kích thước.</label>
+      <label><input type="checkbox"> Em đã gia công và làm nhẵn cạnh.</label>
+      <label><input type="checkbox"> Em đã kiểm tra độ ổn định của sản phẩm.</label>
+      <label><input type="checkbox"> Em đã chụp ảnh và hoàn thành báo cáo.</label>
+    </div>
+  </section>
+  <section class="section panel">
+    <div class="kicker">AN TOÀN LAO ĐỘNG</div><h2 class="section-title">Trước khi bắt đầu</h2>
+    <p class="lead">Đeo kính bảo hộ và trang bị phù hợp; kẹp chặt phôi; kiểm tra dụng cụ; giữ khu vực làm việc gọn gàng. Chỉ sử dụng máy cắt, máy khoan hoặc thiết bị điện khi có giáo viên hướng dẫn và giám sát. Không dùng tay gạt phoi, không chạm vào cạnh sắc.</p>
+  </section>
+</main>
+<footer>PHÒNG THỰC HÀNH CƠ KHÍ THÔNG MINH • Tài liệu học tập mẫu dành cho học sinh</footer>
+<script>
+const video=document.getElementById('video'), placeholder=document.getElementById('cameraPlaceholder');
+const preview=document.getElementById('preview'), statusEl=document.getElementById('cameraStatus');
+const capture=document.getElementById('capture'), canvas=document.getElementById('snapshot');
+let stream=null, hasImage=false;
+document.getElementById('startCamera').addEventListener('click',async()=>{
+  try{
+    if(!navigator.mediaDevices?.getUserMedia) throw new Error('Trình duyệt hoặc kết nối hiện tại không hỗ trợ camera. Hãy mở trang bằng HTTPS hoặc localhost.');
+    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
+    video.srcObject=stream;video.hidden=false;preview.hidden=true;placeholder.hidden=true;capture.disabled=false;hasImage=false;
+    statusEl.textContent='Camera đang hoạt động. Đặt sản phẩm trong khung rồi nhấn Chụp ảnh.';
+  }catch(e){statusEl.textContent='Không mở được camera: '+e.message;}
+});
+capture.addEventListener('click',()=>{
+  if(!stream)return;
+  const w=video.videoWidth,h=video.videoHeight;if(!w||!h)return;
+  canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(video,0,0,w,h);
+  preview.src=canvas.toDataURL('image/jpeg',.9);preview.hidden=false;video.hidden=true;hasImage=true;
+  statusEl.textContent='Đã chụp ảnh. Nhấn “Phân tích mẫu” để xem quy trình minh họa.';
+});
+document.getElementById('upload').addEventListener('change',e=>{
+  const file=e.target.files?.[0];if(!file)return;
+  if(!file.type.startsWith('image/')){statusEl.textContent='Vui lòng chọn tệp hình ảnh.';return;}
+  if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}
+  preview.src=URL.createObjectURL(file);preview.hidden=false;video.hidden=true;placeholder.hidden=true;capture.disabled=true;hasImage=true;
+  statusEl.textContent='Đã tải ảnh lên: '+file.name+'. Đây là ảnh đầu vào, chưa được AI nhận diện.';
+});
+document.getElementById('analyze').addEventListener('click', async()=>{
+  if(!hasImage){statusEl.textContent='Hãy bật camera và chụp ảnh hoặc tải ảnh sản phẩm lên trước.';return;}
+  const btn=document.getElementById('analyze'), out=document.getElementById('aiOutput'), result=document.getElementById('result');
+  let dataUrl=preview.src;
+  if(!dataUrl.startsWith('data:image/')){
+    const response=await fetch(dataUrl); const blob=await response.blob();
+    dataUrl=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(blob);});
+  }
+  btn.disabled=true;btn.textContent='AI đang phân tích…';statusEl.textContent='Đang gửi ảnh đến AI Vision. Vui lòng chờ.';
+  result.style.display='block';out.textContent='Đang phân tích hình ảnh…';
+  try{
+    const apiResponse=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({image:dataUrl})});
+    const payload=await apiResponse.json();
+    if(!apiResponse.ok) throw new Error(payload.error||'Không thể phân tích ảnh.');
+    out.textContent=payload.analysis||'AI không trả về nội dung phân tích.';
+    statusEl.textContent='Đã nhận kết quả từ AI Vision.';
+  }catch(err){
+    out.textContent='Chưa kết nối được AI Vision. '+err.message+'\n\nKiểm tra máy chủ, OPENAI_API_KEY và kết nối mạng.';
+    statusEl.textContent='Phân tích thất bại.';
+  }finally{btn.disabled=false;btn.textContent='AI phân tích ảnh';}
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+window.addEventListener('beforeunload',()=>{if(stream)stream.getTracks().forEach(t=>t.stop());});
+</script>
+</body>
+</html>
